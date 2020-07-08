@@ -8,29 +8,22 @@
 
 Link & Match STT-NF project template based on Yii 2 Basic Project Template. Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for rapidly creating small projects.
 
-REQUIREMENTS
-------------
+## REQUIREMENTS
 
 The minimum requirement by this project template that your Web server supports PHP 5.6.0.
 
+## GETTING STARTED
 
-GETTING STARTED
----------------
-
-Clone the repository to your Web root
-
-~~~
-git clone https://github.com/edoriansyah/link-n-match.git
-~~~
+Clone this repository to your Web root
 
 Update vendor packages
 
-~~~
+```
 composer update
-~~~
+```
 
 You can then access the application through the following URL:
 
-~~~
+```
 http://localhost/link-n-match/
-~~~
+```
