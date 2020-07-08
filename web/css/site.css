@@ -1,0 +1,200 @@
+html,
+body {
+  height: 100%;
+}
+
+/* Star custom*/
+.btn-default:focus, .btn-default.focus {
+  background-color: #FFF;
+}
+
+.navbar {
+  border: none;
+  background-color: #3c8dbc;
+}
+
+.navbar-brand {
+  font-size: 16px;
+}
+
+.navbar-inverse .navbar-brand,
+.navbar-inverse .btn-link,
+.navbar-inverse .navbar-nav > li > a {
+  color: #ffffff;
+}
+
+.btn-link:hover {
+  background-color: #417999;
+}
+
+.navbar-inverse .navbar-nav li a {
+  font-size: 13px;
+  padding-top: 3px 10px;
+}
+
+.dropdown-menu > li > a > .fa-sm {
+  margin-right: 10px;
+  font-weight: 900;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #417999;
+}
+
+.container .breadcrumb a,
+.footer .container a {
+  text-decoration: none;
+}
+
+.footer .container {
+  font-size: 13px;
+}
+
+.wrap {
+  min-height: 100%;
+  height: auto;
+  margin: 0 auto -60px;
+  padding: 0 0 60px;
+  background-color: #ecf0f5;
+}
+
+.jumbotron {
+  padding: 50px 60px;
+  color: #ffffff;
+  text-align: center;
+  background-color: #00c0ef !important;
+}
+
+.jumbotron h2 {
+  font-size: 40px;
+}
+
+.thumbnail {
+  display: block;
+  padding: 4px;
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #86aeca;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+  border-color: #eee;
+  padding: 5px 0;
+}
+
+.dropdown-menu > li > a {
+  font-size: 14px;
+  display: block;
+  padding: 5px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #777;
+  white-space: nowrap;
+}
+/* End custom */
+
+.wrap > .container {
+  padding: 70px 15px 20px;
+}
+
+.footer {
+  height: 60px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  padding-top: 25px;
+}
+
+.not-set {
+  color: #c55;
+  font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after,
+a.desc:after {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  padding-left: 5px;
+}
+
+a.asc:after {
+  content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+  content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+  content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+  content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+  content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+  content: "\e156";
+}
+
+.grid-view th {
+  white-space: nowrap;
+}
+
+.hint-block {
+  display: block;
+  margin-top: 5px;
+  color: #999;
+}
+
+.error-summary {
+  color: #a94442;
+  background: #fdf7f7;
+  border-left: 3px solid #eed3d7;
+  padding: 10px 20px;
+  margin: 0 0 15px 0;
+}
+
+/* align the logout "link" (button in form) of the navbar */
+.nav li > form > button.logout {
+  padding: 15px;
+  border: none;
+}
+
+@media (max-width: 767px) {
+  .nav li > form > button.logout {
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 10px 15px;
+  }
+}
+
+.nav > li > form > button.logout:focus,
+.nav > li > form > button.logout:hover {
+  text-decoration: none;
+}
+
+.nav > li > form > button.logout:focus {
+  outline: none;
+}
