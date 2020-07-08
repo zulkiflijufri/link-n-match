@@ -2,7 +2,7 @@
     <a href="https://www.nurulfikri.ac.id" target="_blank">
         <img src="https://pmb.nurulfikri.ac.id/assets/images/profile.png" height="100px">
     </a>
-    <h1 align="center">Link & Match STT-NF Project Template</h1>
+    <h1 align="center">Link & Match STT-NF Project</h1>
     <br>
 </p>
 
