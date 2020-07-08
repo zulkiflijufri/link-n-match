@@ -45,7 +45,6 @@ class MahasiswaSearch extends Mahasiswa
         // add conditions that should always apply here
         $query->joinWith('programStudi');
         $query->joinWith('masaStudi');
-        $query->joinWith('tagihan');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

@@ -27,9 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             // 'id',
+            [
+                'attribute' => 'id_detail_tagihan',
+                'value'     => 'detailTagihan.tagihan.nomor_tagihan'
+            ],
             'tanggal',
-            'nomor_bukti',
-            'id_detail_tagihan',
+            'nama',
+            'bank',
+            'nomor_pembayaran',
             'besar_pembayaran',
             'keterangan',
 

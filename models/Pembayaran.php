@@ -8,8 +8,10 @@ use Yii;
  * This is the model class for table "pembayaran".
  *
  * @property int $id
+ * @property string $nama
  * @property string $tanggal
- * @property string $nomor_bukti
+ * @property string $bank
+ * @property string $nomor_pembayaran
  * @property int $id_detail_tagihan
  * @property int $besar_pembayaran
  * @property string|null $keterangan
@@ -32,10 +34,10 @@ class Pembayaran extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['tanggal', 'nomor_bukti', 'id_detail_tagihan', 'besar_pembayaran'], 'required'],
+            [['nama','tanggal', 'nomor_pembayaran', 'id_detail_tagihan', 'bank', 'besar_pembayaran'], 'required'],
             [['tanggal'], 'safe'],
             [['id_detail_tagihan', 'besar_pembayaran'], 'integer'],
-            [['nomor_bukti'], 'string', 'max' => 50],
+            [['nomor_pembayaran'], 'string', 'max' => 50],
             [['keterangan'], 'string', 'max' => 255],
             [['id_detail_tagihan'], 'exist', 'skipOnError' => true, 'targetClass' => DetailTagihan::className(), 'targetAttribute' => ['id_detail_tagihan' => 'id']],
         ];

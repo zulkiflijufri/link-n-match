@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'tanggal')->textInput() ?>
 
     <?= $form->field($model, 'id_detail_tagihan')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(Tagihan::find()->all(), 'id', 'nomor_tagihan'),
+        'data' => ArrayHelper::map(Tagihan::find()->where(['not',['sisa' => 0]])->all(), 'id', 'nomor_tagihan'),
         'options' => [
             'id' => 'nomor_tagihan',
             'placeholder' => 'Nomor Tagihan'

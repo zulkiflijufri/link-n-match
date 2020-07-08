@@ -2,12 +2,17 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+
+$sisa = [];
+foreach ($mahasiswa as $mhs) {
+	$sisa[] = $mhs->tagihans[0]['sisa'];
+}
+for ($i = 0; $i < count($sisa); $i++) {
+	if ($sisa[$i] != 0) {
+    	$bool = true;
+    }
+}
 ?>
-<?php //if ($mahasiswa[0]->tagihans): ?>
-	<!-- <div>
-		<a href="#" class="btn btn-sm btn-info" id="download" style="margin-bottom: 10px; float: right;">Download</a>
-	</div> -->
-<?php //endif ?>
 
 <div class="row">
 	<div class="col-md-12">
@@ -17,9 +22,7 @@ use yii\helpers\Url;
 			</div>
 			<div class="panel-body">
 				<div class="tagihan-kuliah-index">
-					<!-- <div class="pull-right">
-					</div> -->
-					<?php if ($mahasiswa[0]->tagihans): ?>
+					<?php if ($bool): ?>
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
@@ -42,8 +45,7 @@ use yii\helpers\Url;
 										<td><?= $mhs->tagihans[0]["nomor_tagihan"] ?></td>
 										<td style="text-transform: uppercase;"><?= $mhs->nama ?></td>
 										<td id="prodi" style="text-transform: uppercase;"><?= $mhs->programStudi->nama ?></td>
-										<td><?= Yii::$app->formatter->asDate($mhs->tagihans[0]["tanggal"],
-										'dd-MM-Y') ?></td>
+										<td><?= Yii::$app->formatter->asDate($mhs->tagihans[0]["tanggal"],'dd-MM-Y') ?></td>
 										<td id="masa-studi"><?= $mhs->masaStudi->nama ?></td>
 										<td style="text-align: right;">Rp.<?= Yii::$app->formatter->asDecimal($mhs->tagihans[0]["subtotal_biaya"], 0) ?></td>
 										<?php if ($mhs->tagihans[0]->detailTagihans[0]["status"] == 'Lunas'): ?>
@@ -64,13 +66,3 @@ use yii\helpers\Url;
 		</div>
 	</div>
 </div>
-<?php
-$js=<<<js
-// $('#download').on("click", function() {
-	// var prodi = document.getElementById('prodi').textContent;
-	// var studi = document.getElementById('masa-studi').textContent;
-	// document.getElementById("download").setAttribute("href", "/mahasiswa/export-tagihan?program_studi="+prodi+"&masa_studi="+studi);
-// });
-js;
-$this->registerJS($js);
-?>

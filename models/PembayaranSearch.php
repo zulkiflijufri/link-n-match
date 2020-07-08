@@ -18,7 +18,7 @@ class PembayaranSearch extends Pembayaran
     {
         return [
             [['id', 'id_detail_tagihan', 'besar_pembayaran'], 'integer'],
-            [['tanggal', 'nomor_bukti', 'keterangan'], 'safe'],
+            [['nama', 'tanggal', 'nomor_pembayaran', 'keterangan'], 'safe'],
         ];
     }
 
@@ -64,7 +64,9 @@ class PembayaranSearch extends Pembayaran
             'besar_pembayaran' => $this->besar_pembayaran,
         ]);
 
-        $query->andFilterWhere(['like', 'nomor_bukti', $this->nomor_bukti])
+        $query->andFilterWhere(['like', 'nomor_pembayaran', $this->nomor_pembayaran])
+            ->andFilterWhere(['like', 'nama', $this->nama])
+            ->andFilterWhere(['like', 'bank', $this->bank])
             ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
 
         return $dataProvider;

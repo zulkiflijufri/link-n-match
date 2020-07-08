@@ -37,7 +37,7 @@ Icon::map($this);
                 </a>
             </div>
             <div class="col-md-2">
-                <a href="#" title="Pembayaran Mahasiswa" data-toggle="tooltip" data-original-title="Pembayaran Mahasiswa">
+                <a href="/mahasiswa/pembayaran" title="Pembayaran Mahasiswa" data-toggle="tooltip" data-original-title="Pembayaran Mahasiswa">
                     <div class="thumbnail" style="text-align:center; padding-top:10px;">
                         <i class="fa fa-money-check-alt fa-4x"></i>
                         <div class="caption" style="padding:8px 0 0;">

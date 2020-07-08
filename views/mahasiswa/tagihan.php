@@ -60,8 +60,6 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <?php
 $urlData = Url::to(['mahasiswa/get-data-tagihan']);
-// $urlProdi = Url::to(['mahasiswa/get-tagihan-prodi']);
-// $urlStudi = Url::to(['mahasiswa/get-tagihan-studi']);
 $js=<<<js
 	$('#search').on("click", function() {
 		var prodi = $("#program-studi").val();
@@ -87,9 +85,6 @@ $js=<<<js
 			document.getElementById('download').setAttribute("href", "/mahasiswa/export-tagihan?program_studi="+prodi+"&masa_studi="+studi);
 		}
 	});
-	// $('#search').on('click', function(){
-
-	// });
 js;
 $this->registerJS($js);
 ?>
