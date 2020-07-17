@@ -22,7 +22,8 @@ Update vendor packages
 composer update
 ```
 
-create database with name #### keuangan
+#### CREATE DATABASE
+create database with name `` keuangan ``
 
 Run project
 
