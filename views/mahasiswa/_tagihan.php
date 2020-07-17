@@ -3,15 +3,6 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$sisa = [];
-foreach ($mahasiswa as $mhs) {
-	$sisa[] = $mhs->tagihans[0]['sisa'];
-}
-for ($i = 0; $i < count($sisa); $i++) {
-	if ($sisa[$i] != 0) {
-    	$bool = true;
-    }
-}
 ?>
 
 <div class="row">
@@ -38,7 +29,7 @@ for ($i = 0; $i < count($sisa); $i++) {
 						</thead>
 						<tbody>
 							<?php $no=1; ?>
-							<?php foreach ($mahasiswa as $mhs) : ?>
+							<?php foreach ($mahasiswa as $key => $mhs) : ?>
 								<?php if ($mhs->tagihans && $mhs->tagihans[0]['sisa'] != 0): ?>
 									<tr>
 										<td><?= $no++ ?></td>
@@ -47,8 +38,8 @@ for ($i = 0; $i < count($sisa); $i++) {
 										<td id="prodi" style="text-transform: uppercase;"><?= $mhs->programStudi->nama ?></td>
 										<td><?= Yii::$app->formatter->asDate($mhs->tagihans[0]["tanggal"],'dd-MM-Y') ?></td>
 										<td id="masa-studi"><?= $mhs->masaStudi->nama ?></td>
-										<td style="text-align: right;">Rp.<?= Yii::$app->formatter->asDecimal($mhs->tagihans[0]["subtotal_biaya"], 0) ?></td>
-										<?php if ($mhs->tagihans[0]->detailTagihans[0]["status"] == 'Lunas'): ?>
+										<td style="text-align: right;">Rp.<?= Yii::$app->formatter->asDecimal($mhs->tagihans[0]["sisa"], 0) ?></td>
+										<?php if ($mhs->tagihans[0]["sisa"] == 0): ?>
 											<td style="text-align: center;"><span class="label label-success">LUNAS</span></td>
 										<?php else: ?>
 											<td style="text-align: center;"><span class="label label-danger">BELUM LUNAS</span></td>

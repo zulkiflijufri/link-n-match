@@ -43,8 +43,9 @@ Icon::map($this)
                 [
                     'label' => 'Keuangan',
                     'items' => [
-                        ['label' => '<i class="fa fa-sm fa-file-invoice-dollar"></i>&nbsp;&nbsp;Rekap Pembayaran', 'url' => '/mahasiswa/tagihan-kuliah', 'encode' => false],
-                        ['label' => '<i class="fa fa-sm fa-money-check-alt"></i>Registrasi Pembayaran', 'url' => '/registrasi', 'encode' => false],
+                    	['label' => '<i class="fa fa-sm fa-file-signature"></i>Registrasi Pembayaran', 'url' => '/registrasi', 'encode' => false],
+                        ['label' => '<i class="fa fa-sm fa-file-invoice-dollar"></i>&nbsp;Rekap Tagihan', 'url' => '/mahasiswa/tagihan-kuliah', 'encode' => false],
+                        ['label' => '<i class="fa fa-sm fa-file-invoice-dollar"></i>&nbsp;Rekap Pembayaran', 'url' => '/mahasiswa/pembayaran', 'encode' => false],
                     ],
                 ],
             ]

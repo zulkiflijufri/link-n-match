@@ -81,7 +81,7 @@ $js=<<<js
 			});
 			var prodi = $('#program-studi option:selected').text();
 			var studi = $('#masa-studi option:selected').text();
-			document.getElementById('export').innerHTML = '<a href="" class="btn btn-default" id="download" title="Download Excel" style="margin-top:10px; margin-left:10px;"><i class="fas fa-cloud-download-alt"></i></a>'
+			document.getElementById('export').innerHTML = '<a href="" class="btn btn-default" id="download" title="Download Excel" style="margin-top:10px; margin-left:10px;"><i class="fas fa-download"></i></a>'
 			document.getElementById('download').setAttribute("href", "/mahasiswa/export-tagihan?program_studi="+prodi+"&masa_studi="+studi);
 		}
 	});
