@@ -23,9 +23,9 @@ composer update
 ```
 
 #### CREATE DATABASE
-create database with name `` keuangan ``
+create database with name `` keuangan ``. Database are in the folder `` sql `` and you must import to `` localhost/phpmyadmin ``
 
-Run project
+Run project :tada:
 
 ```
 http://localhost/link-n-match/
