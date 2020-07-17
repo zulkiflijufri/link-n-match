@@ -6,7 +6,7 @@
     <br>
 </p>
 
-Link & Match STT-NF project template based on Yii 2 Basic Project Template. Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for rapidly creating small projects.
+Link & Match STT-NF project based on Yii 2 Basic. Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for rapidly creating small projects.
 
 ## REQUIREMENTS
 
@@ -22,7 +22,9 @@ Update vendor packages
 composer update
 ```
 
-You can then access the application through the following URL:
+create database with name #### keuangan
+
+Run project
 
 ```
 http://localhost/link-n-match/
