@@ -158,20 +158,14 @@ class MahasiswaController extends Controller
         $mahasiswa = Mahasiswa::find()->where(['id_program_studi' => $id_program_studi, 'id_masa_studi' => $id_masa_studi])->all();
 
         $sisa = [];
-        $id_tagihan = [];
+        $jt = [];
         foreach ($mahasiswa as $mhs) {
             for ($i = 0; $i < count($mhs->tagihans[0]->detailTagihans); $i++) {
                 if ($mhs->tagihans[0]->detailTagihans[$i]->tagihan['sisa'] != 0 && $mhs->tagihans[0]->detailTagihans[$i]['status'] != 'Lunas') {
-                    $jt[] = $mhs->tagihans[0]->detailTagihans[$i]->jenisTagihan['nama'];
+                    $jt[] = ["tagihan" => $mhs->tagihans[0]->detailTagihans[$i]->jenisTagihan['nama']];
                 }
             }
         }
-
-        // var_dump($jt);
-        // foreach ($jt as $jenis) {
-        //     $data = ['jenis' => $jenis];
-        //     var_dump($data);
-        // }
 
         foreach ($mahasiswa as $mhs) {
             $sisa[] = $mhs->tagihans[0]['sisa'];
@@ -213,6 +207,8 @@ class MahasiswaController extends Controller
             $notag[] = $mhs->tagihans[0]['nomor_tagihan'];
         }
 
+        // var_dump($mhs->tagihans[0]->detailTagihans[]->pembayarans);
+
         $command = Yii::$app->db->createCommand('SELECT * FROM pembayaran WHERE `id_detail_tagihan` IN ('.implode(',',$payId).')');
         $pay = $command->queryAll();
 
@@ -236,7 +232,7 @@ class MahasiswaController extends Controller
         $OpenTBS->LoadTemplate($template);
         $data = [];
         $tmpid = [];
-        $jt = [];
+        $tagihan = [];
         $no=1;
 
 
@@ -249,7 +245,6 @@ class MahasiswaController extends Controller
                     'nama'=>$mhs->nama,
                     'prodi'=>$mhs->programStudi->nama,
                     'studi'=>$mhs->masaStudi->nama,
-                    'tagihan'=>'Rp. ' . Yii::$app->formatter->asDecimal($mhs->tagihans[0]["sisa"], 0)
                 ];
             }
 
@@ -261,20 +256,58 @@ class MahasiswaController extends Controller
             $data2 = [
                 ['tagihan' => 'Rp. ' . Yii::$app->formatter->asDecimal($total, 0)]
             ];
-        }
 
-        foreach ($mahasiswa as $mhs) {
             for ($i = 0; $i < count($mhs->tagihans[0]->detailTagihans); $i++) {
                 if ($mhs->tagihans[0]->detailTagihans[$i]->tagihan['sisa'] != 0 && $mhs->tagihans[0]->detailTagihans[$i]['status'] != 'Lunas') {
-                    $jt[] = $mhs->tagihans[0]->detailTagihans[$i]->jenisTagihan['nama'];
+                    $tagihan[] = [
+                        "jt" => $mhs->tagihans[0]->detailTagihans[$i]->jenisTagihan['nama'],
+                        "biaya" => 'Rp. ' . Yii::$app->formatter->asDecimal($mhs->tagihans[0]->detailTagihans[$i]['besar_biaya'], 0) ." @". $mhs->tagihans[0]->detailTagihans[$i]["kuantitas"],
+                        "pot_beastudi" => 'Rp. ' . Yii::$app->formatter->asDecimal($mhs->tagihans[0]->detailTagihans[$i]["pot_beastudi"], 0),
+                    ];
                 }
             }
         }
 
         $OpenTBS->MergeBlock('data', $data);
-        // $OpenTBS->MergeBlock('jenis', $data3);
+        $OpenTBS->MergeBlock('detail', $tagihan);
         $OpenTBS->MergeBlock('total', $data2);
         $OpenTBS->Show(OPENTBS_DOWNLOAD, 'Rekap Biaya Tagihan Mahasiswa.xlsx');
+        exit;
+    }
+
+     public function actionExportPembayaran($program_studi, $masa_studi)
+    {
+        $prodi = ProgramStudi::find()->where(['nama' => $program_studi])->one();
+        $studi = MasaStudi::find()->where(['nama' => $masa_studi])->one();
+        $mahasiswa = Mahasiswa::find()->where(['id_program_studi' => $prodi->id, 'id_masa_studi' => $studi->id])->all();
+
+        // Initalize the TBS instance
+        $OpenTBS = new \hscstudio\export\OpenTBS;
+       // Change with Your template kaka
+        $template = Yii::getAlias('@hscstudio/export').'/templates/opentbs/pembayaran.ods';
+        $OpenTBS->LoadTemplate($template);
+        $data = [];
+        $tmpid = [];
+        $tagihan = [];
+        $no=1;
+
+
+        foreach($mahasiswa as $mhs){
+             for ($i = 0; $i < count($mhs->tagihans[0]->detailTagihans); $i++) {
+                if ($mhs->tagihans[0]->detailTagihans[$i]) {
+                    $tagihan[] = [
+                        "jt" => $mhs->tagihans[0]->detailTagihans[$i]->jenisTagihan['nama'],
+                        "biaya" => 'Rp. ' . Yii::$app->formatter->asDecimal($mhs->tagihans[0]->detailTagihans[$i]['besar_biaya'], 0) ." @". $mhs->tagihans[0]->detailTagihans[$i]["kuantitas"],
+                        "pot_beastudi" => 'Rp. ' . Yii::$app->formatter->asDecimal($mhs->tagihans[0]->detailTagihans[$i]["pot_beastudi"], 0),
+                    ];
+                }
+            }
+        }
+
+        $OpenTBS->MergeBlock('data', $data);
+        $OpenTBS->MergeBlock('detail', $tagihan);
+        // $OpenTBS->MergeBlock('total', $data2);
+        $OpenTBS->Show(OPENTBS_DOWNLOAD, 'Rekap Pembayaran Mahasiswa.xlsx');
         exit;
     }
 }
